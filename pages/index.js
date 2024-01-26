@@ -15,7 +15,7 @@ export default function HomePage() {
   if (isLoading) return <div>loading...</div>;
   return (
     <div>
-      <h1>Hello from Next.js</h1>
+      <h1>Art Gallery</h1>
       <ArtList pieces={artPieces} />
     </div>
   );
