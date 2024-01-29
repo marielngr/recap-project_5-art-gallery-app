@@ -10,6 +10,8 @@ export default function ArtList({ pieces }) {
             artist={piece.artist}
             slug={piece.slug}
             imageSource={piece.imageSource}
+            width={piece.dimensions.width}
+            height={piece.dimensions.height}
           />
         </li>
       ))}
