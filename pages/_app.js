@@ -1,3 +1,4 @@
+import Layout from "@/components/Layout";
 import GlobalStyle from "../styles";
 import { SWRConfig } from "swr";
 
@@ -15,8 +16,9 @@ const fetcher = async (url) => {
 };
 export default function App({ Component, pageProps }) {
   return (
-    <>
+    <Layout>
       <GlobalStyle />
+
       <SWRConfig
         value={{
           fetcher,
@@ -24,6 +26,6 @@ export default function App({ Component, pageProps }) {
       >
         <Component {...pageProps} />
       </SWRConfig>
-    </>
+    </Layout>
   );
 }

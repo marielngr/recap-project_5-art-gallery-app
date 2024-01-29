@@ -1,7 +1,8 @@
-import Spotlight from "@/components/Spotlight";
+import ArtList from "@/components/ArtPieces";
+
 import useSWR from "swr";
 
-export default function SpotlightPage() {
+export default function OverviewPage() {
   const {
     data: artPieces,
     error,
@@ -10,13 +11,13 @@ export default function SpotlightPage() {
 
   console.log(artPieces);
 
-  //spezifische Errormessage für User
   if (error) return <div>failed to load</div>;
   if (isLoading) return <div>loading...</div>;
   return (
     <>
       <div>
-        <Spotlight pieces={artPieces} />
+        <h1>Art Gallery</h1>
+        <ArtList pieces={artPieces} />
       </div>
     </>
   );
