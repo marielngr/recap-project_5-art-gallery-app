@@ -21,9 +21,7 @@ export default function App({ Component, pageProps }) {
     error,
     isLoading,
   } = useSWR("https://example-apis.vercel.app/api/art", fetcher);
-  //spezifische Errormessage für User
-  if (error) return <div>failed to load</div>;
-  if (isLoading) return <div>loading...</div>;
+
   return (
     <Layout>
       <GlobalStyle />
@@ -33,7 +31,9 @@ export default function App({ Component, pageProps }) {
           fetcher,
         }}
       >
-        <Component artPieces={artPieces} {...pageProps} />
+        {error && <div>failed to load</div>}
+        {isLoading && <div>loading...</div>}
+        {artPieces && <Component artPieces={artPieces} {...pageProps} />}
       </SWRConfig>
     </Layout>
   );
