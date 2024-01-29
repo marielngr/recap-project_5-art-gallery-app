@@ -1,4 +1,5 @@
 import ArtList from "@/components/ArtPieces";
+import Spotlight from "@/components/Spotlight";
 import useSWR from "swr";
 
 export default function HomePage() {
@@ -15,6 +16,7 @@ export default function HomePage() {
   if (isLoading) return <div>loading...</div>;
   return (
     <div>
+      <Spotlight pieces={artPieces} />
       <h1>Art Gallery</h1>
       <ArtList pieces={artPieces} />
     </div>

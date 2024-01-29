@@ -19,7 +19,7 @@ export default function ArtPiecesPreview({
           alt="picture"
         ></Image>
         <p>
-          "{name}" by {artist}
+          {`"${name}"`} by {artist}
         </p>
       </div>
     </>
