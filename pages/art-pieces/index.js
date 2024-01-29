@@ -1,18 +1,6 @@
 import ArtList from "@/components/ArtPieces";
 
-import useSWR from "swr";
-
-export default function OverviewPage() {
-  const {
-    data: artPieces,
-    error,
-    isLoading,
-  } = useSWR("https://example-apis.vercel.app/api/art");
-
-  console.log(artPieces);
-
-  if (error) return <div>failed to load</div>;
-  if (isLoading) return <div>loading...</div>;
+export default function OverviewPage({ artPieces }) {
   return (
     <>
       <div>
