@@ -10,8 +10,6 @@ export default function ArtPiecesPreview({
 }) {
   return (
     <>
-      <h2>{name}</h2>
-      <h3>{artist}</h3>
       <div>
         <Image
           //src={`https://example-apis.vercel.app/assets/art/${slug}.jpg`}
@@ -20,6 +18,9 @@ export default function ArtPiecesPreview({
           height={height * 0.1}
           alt="picture"
         ></Image>
+        <p>
+          "{name}" by {artist}
+        </p>
       </div>
     </>
   );
