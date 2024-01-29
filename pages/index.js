@@ -1,4 +1,3 @@
-import Navigation from "@/components/Navigation";
 import Spotlight from "@/components/Spotlight";
 import useSWR from "swr";
 
@@ -19,7 +18,6 @@ export default function SpotlightPage() {
       <div>
         <Spotlight pieces={artPieces} />
       </div>
-      <Navigation />
     </>
   );
 }

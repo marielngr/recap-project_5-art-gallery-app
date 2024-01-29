@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 export default function Navigation() {
   return (
-    <div>
+    <>
       <Nav>
         <ListItem>
           <StyledLink href={` / `}>Spotlight</StyledLink>
@@ -15,7 +15,7 @@ export default function Navigation() {
           <StyledLink href={`favorites`}>Favorites</StyledLink>
         </ListItem>
       </Nav>
-    </div>
+    </>
   );
 }
 

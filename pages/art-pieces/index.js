@@ -1,5 +1,5 @@
 import ArtList from "@/components/ArtPieces";
-import Navigation from "@/components/Navigation";
+
 import useSWR from "swr";
 
 export default function OverviewPage() {
@@ -19,7 +19,6 @@ export default function OverviewPage() {
         <h1>Art Gallery</h1>
         <ArtList pieces={artPieces} />
       </div>
-      <Navigation />
     </>
   );
 }
