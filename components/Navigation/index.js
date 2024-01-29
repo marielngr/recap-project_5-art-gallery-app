@@ -24,8 +24,9 @@ const Nav = styled.ul`
   list-style: none;
   margin: 0;
   padding: 0;
-  position: sticky;
+  position: fixed;
   bottom: 0;
+  width: 100%;
 `;
 
 const ListItem = styled.li`

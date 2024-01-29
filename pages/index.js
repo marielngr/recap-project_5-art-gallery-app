@@ -8,8 +8,6 @@ export default function SpotlightPage() {
     isLoading,
   } = useSWR("https://example-apis.vercel.app/api/art");
 
-  console.log(artPieces);
-
   //spezifische Errormessage für User
   if (error) return <div>failed to load</div>;
   if (isLoading) return <div>loading...</div>;
