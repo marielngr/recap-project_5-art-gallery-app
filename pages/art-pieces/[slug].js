@@ -6,10 +6,10 @@ import ArtPieceDetails from "@/components/ArtPieceDetails";
 export default function DetailsPage({ artPieces }) {
   const router = useRouter();
   const { slug } = router.query;
-  console.log(artPieces);
-  /*if (!pieces) {
+
+  if (!artPieces) {
     return null;
-}*/
+  }
 
   const piece = artPieces.find((piece) => piece.slug === slug);
 

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function ArtPieceDetails({
   image,
@@ -30,6 +31,9 @@ export default function ArtPieceDetails({
         <strong>Genre: </strong>
         {genre}
       </p>
+      <button type="button">
+        <Link href="/art-pieces">Back to Art Gallery</Link>
+      </button>
     </>
   );
 }
