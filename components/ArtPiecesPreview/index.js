@@ -1,4 +1,5 @@
 import Image from "next/image";
+import FavoriteButton from "../FavoriteButton";
 
 export default function ArtPiecesPreview({
   imageSource,
@@ -11,6 +12,8 @@ export default function ArtPiecesPreview({
   return (
     <>
       <div>
+<FavoriteButton isFavorite={true}/>
+
         <Image
           //src={`https://example-apis.vercel.app/assets/art/${slug}.jpg`}
           src={imageSource}
