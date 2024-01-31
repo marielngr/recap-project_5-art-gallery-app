@@ -3,11 +3,7 @@ import FavoriteButton from "@/components/FavoriteButton";
 import { getRandomArtPiece } from "@/utils/getRandomPiece";
 import { useState } from "react";
 
-export default function SpotlightPage({
-  isFavorite,
-  artPieces,
-  onToggleFavorite,
-}) {
+export default function SpotlightPage({ artPieces, handleToggleFavorite }) {
   // const randomIndex = Math.floor(Math.random() * pieces.length);
   // const piece = pieces[randomIndex];
   const piece = getRandomArtPiece(artPieces);
@@ -17,7 +13,10 @@ export default function SpotlightPage({
     <>
       <div>
         <FavoriteButton
-          isFavorite={false}
+          // isFavorite={artPiecesInfo.isFavorite}
+          isFavorite={
+            artPiecesInfo.find((piece) => piece.slug === piece.slug)?.isFavorite
+          }
           onToggleFavorite={() => onToggleFavorite(piece.slug)}
         />
         <Spotlight

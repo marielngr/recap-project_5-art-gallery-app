@@ -27,8 +27,20 @@ export default function App({ Component, pageProps }) {
 
   const [artPiecesInfo, setArtPiecesInfo] = useState([]);
 
+  // function handleToggleFavorite(slug) {
+  //   console.log("HandleToggleFAvorite für ", slug);
+  //   setArtPiecesInfo(
+  //     artPiecesInfo.map((artPiece) =>
+  //       artPiece.slug === slug
+  //         ? { ...artPiece, isFavorite: !artPiece.isFavorite }
+  //         : isFavorite
+  //     )
+  //   );
+  // }
+
   function handleToggleFavorite(slug) {
     setArtPiecesInfo((artPiecesInfo) => {
+      console.log(artPiecesInfo);
       const piece = artPiecesInfo.find((piece) => piece.slug === slug);
       if (piece) {
         return artPiecesInfo.map((piece) =>
@@ -37,6 +49,7 @@ export default function App({ Component, pageProps }) {
             : piece
         );
       }
+      return [...artPiecesInfo, { slug, isFavorite: true }];
     });
   }
 
