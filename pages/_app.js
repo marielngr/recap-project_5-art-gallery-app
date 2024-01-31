@@ -23,7 +23,17 @@ export default function App({ Component, pageProps }) {
     isLoading,
   } = useSWR("https://example-apis.vercel.app/api/art", fetcher);
 
-const [artPiecesInfo, setArtPiecesInfo]=useState ([]);
+  const [artPiecesInfo, setArtPiecesInfo] = useState([]);
+
+  function handleToggleFavorite(slug) {
+    setArtPiecesInfo(
+      artPiecesInfo.map((artPiece) =>
+        artPiece.slug === slug
+          ? { ...artPiece, isFavorite: !artPiece.isFavorite }
+          : isFavorite
+      )
+    );
+  }
 
   return (
     <Layout>
@@ -36,7 +46,14 @@ const [artPiecesInfo, setArtPiecesInfo]=useState ([]);
       >
         {error && <div>failed to load</div>}
         {isLoading && <div>loading...</div>}
-        {artPieces && <Component artPieces={artPieces} artPiecesInfo={artPiecesInfo} {...pageProps} />}
+        {artPieces && (
+          <Component
+            artPieces={artPieces}
+            artPiecesInfo={artPiecesInfo}
+            onToggleFavorite={handleToggleFavorite}
+            {...pageProps}
+          />
+        )}
       </SWRConfig>
     </Layout>
   );
