@@ -8,11 +8,12 @@ export default function ArtPiecesPreview({
   slug,
   width,
   height,
+  handleToggleFavorites,
 }) {
   return (
     <>
       <div>
-<FavoriteButton isFavorite={true}/>
+        <FavoriteButton onToggleFavorite={handleToggleFavorites} />
 
         <Image
           //src={`https://example-apis.vercel.app/assets/art/${slug}.jpg`}
