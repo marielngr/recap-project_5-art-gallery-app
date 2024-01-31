@@ -2,7 +2,11 @@ import Spotlight from "@/components/Spotlight";
 import FavoriteButton from "@/components/FavoriteButton";
 import { getRandomArtPiece } from "@/utils/getRandomPiece";
 
-export default function SpotlightPage({ artPieces, handleToggleFavorite }) {
+export default function SpotlightPage({
+  artPieces,
+  onToggleFavorite,
+  artPiecesInfo,
+}) {
   // const randomIndex = Math.floor(Math.random() * pieces.length);
   // const piece = pieces[randomIndex];
   const piece = getRandomArtPiece(artPieces);
@@ -11,7 +15,13 @@ export default function SpotlightPage({ artPieces, handleToggleFavorite }) {
   return (
     <>
       <div>
-        <FavoriteButton onToggleFavorite={() => handleToggleFavorite} />
+        <FavoriteButton
+          // isFavorite={artPiecesInfo.isFavorite}
+          isFavorite={
+            artPiecesInfo.find((piece) => piece.slug === piece.slug)?.isFavorite
+          }
+          onToggleFavorite={() => onToggleFavorite(piece.slug)}
+        />
         <Spotlight
           image={piece.imageSource}
           width={piece.dimensions.width}

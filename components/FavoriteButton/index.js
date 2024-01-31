@@ -1,8 +1,8 @@
 import SvgHeart from "../SvgHeart";
 
-export default function FavoriteButton({ isFavorite, onToggleFavorite, slug }) {
+export default function FavoriteButton({ isFavorite, onToggleFavorite }) {
   return (
-    <button onClick={() => onToggleFavorite(slug)} aria-label="favorite">
+    <button onClick={() => onToggleFavorite()} aria-label="favorite">
       <SvgHeart fill={isFavorite ? "red" : "grey"} />
     </button>
   );

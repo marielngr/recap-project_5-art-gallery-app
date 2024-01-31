@@ -6,13 +6,13 @@ export default function Navigation() {
     <>
       <Nav>
         <ListItem>
-          <StyledLink href={` / `}>Spotlight</StyledLink>
+          <StyledLink href={`/`}>Spotlight</StyledLink>
         </ListItem>
         <ListItem>
-          <StyledLink href={`art-pieces`}>Art Pieces</StyledLink>
+          <StyledLink href={`/art-pieces`}>Art Pieces</StyledLink>
         </ListItem>
         <ListItem>
-          <StyledLink href={`favorites`}>Favorites</StyledLink>
+          <StyledLink href={`/favorites`}>Favorites</StyledLink>
         </ListItem>
       </Nav>
     </>

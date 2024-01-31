@@ -1,12 +1,19 @@
 import ArtPiecesPreview from "../ArtPiecesPreview";
-import Link from "next/link";
+export function isArtPieceFavorite(artPiecesInfo, slug) {
+  const info = artPiecesInfo.find((artPieceInfo) => artPieceInfo.slug === slug);
+  if (info === undefined) {
+    return false;
+  } else {
+    return info.isFavorite;
+  }
+}
 
-export default function ArtList({ pieces }) {
+export default function ArtList({ pieces, onToggleFavorite, artPiecesInfo }) {
   return (
     <ul>
-      {pieces?.map((piece) => (
-        <li key={piece.slug}>
-          <Link href={`/art-pieces/${piece.slug}`}>
+      {pieces?.map((piece) => {
+        return (
+          <li key={piece.slug}>
             <ArtPiecesPreview
               name={piece.name}
               artist={piece.artist}
@@ -14,10 +21,12 @@ export default function ArtList({ pieces }) {
               imageSource={piece.imageSource}
               width={piece.dimensions.width}
               height={piece.dimensions.height}
+              onToggleFavorite={onToggleFavorite}
+              isFavorite={isArtPieceFavorite(artPiecesInfo, piece.slug)}
             />
-          </Link>
-        </li>
-      ))}
+          </li>
+        );
+      })}
     </ul>
   );
 }
