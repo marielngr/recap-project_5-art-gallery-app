@@ -3,6 +3,7 @@ import GlobalStyle from "../styles";
 import { SWRConfig } from "swr";
 import useSWR from "swr";
 import { useState } from "react";
+import FavoriteButton from "@/components/FavoriteButton";
 
 const fetcher = async (url) => {
   const res = await fetch(url);
@@ -25,15 +26,30 @@ export default function App({ Component, pageProps }) {
 
   const [artPiecesInfo, setArtPiecesInfo] = useState([]);
 
+  // function handleToggleFavorite(slug) {
+  //   console.log("HandleToggleFAvorite für ", slug);
+  //   setArtPiecesInfo(
+  //     artPiecesInfo.map((artPiece) =>
+  //       artPiece.slug === slug
+  //         ? { ...artPiece, isFavorite: !artPiece.isFavorite }
+  //         : isFavorite
+  //     )
+  //   );
+  // }
+
   function handleToggleFavorite(slug) {
-    console.log("HandleToggleFAvorite für ", slug);
-    setArtPiecesInfo(
-      artPiecesInfo.map((artPiece) =>
-        artPiece.slug === slug
-          ? { ...artPiece, isFavorite: !artPiece.isFavorite }
-          : isFavorite
-      )
-    );
+    setArtPiecesInfo((artPiecesInfo) => {
+      console.log(artPiecesInfo);
+      const piece = artPiecesInfo.find((piece) => piece.slug === slug);
+      if (piece) {
+        return artPiecesInfo.map((piece) =>
+          piece.slug === slug
+            ? { ...piece, isFavorite: !piece.isFavorite }
+            : piece
+        );
+      }
+      return [...artPiecesInfo, { slug, isFavorite: true }];
+    });
   }
 
   return (
