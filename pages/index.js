@@ -16,7 +16,10 @@ export default function SpotlightPage({
     <>
       <div>
         <FavoriteButton
-          isFavorite={artPiecesInfo.isFavorite}
+          // isFavorite={artPiecesInfo.isFavorite}
+          isFavorite={
+            artPiecesInfo.find((piece) => piece.slug === piece.slug)?.isFavorite
+          }
           onToggleFavorite={() => onToggleFavorite(piece.slug)}
         />
         <Spotlight
