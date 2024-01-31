@@ -3,6 +3,7 @@ import GlobalStyle from "../styles";
 import { SWRConfig } from "swr";
 import useSWR from "swr";
 import { useState } from "react";
+import FavoriteButton from "@/components/FavoriteButton";
 
 const fetcher = async (url) => {
   const res = await fetch(url);
@@ -16,6 +17,7 @@ const fetcher = async (url) => {
 
   return res.json();
 };
+
 export default function App({ Component, pageProps }) {
   const {
     data: artPieces,
@@ -26,13 +28,16 @@ export default function App({ Component, pageProps }) {
   const [artPiecesInfo, setArtPiecesInfo] = useState([]);
 
   function handleToggleFavorite(slug) {
-    setArtPiecesInfo(
-      artPiecesInfo.map((artPiece) =>
-        artPiece.slug === slug
-          ? { ...artPiece, isFavorite: !artPiece.isFavorite }
-          : isFavorite
-      )
-    );
+    setArtPiecesInfo((artPiecesInfo) => {
+      const piece = artPiecesInfo.find((piece) => piece.slug === slug);
+      if (piece) {
+        return artPiecesInfo.map((piece) =>
+          piece.slug === slug
+            ? { ...piece, isFavorite: !piece.isFavorite }
+            : piece
+        );
+      }
+    });
   }
 
   return (
@@ -50,7 +55,7 @@ export default function App({ Component, pageProps }) {
           <Component
             artPieces={artPieces}
             artPiecesInfo={artPiecesInfo}
-            onToggleFavorite={handleToggleFavorite}
+            onToggleFavorite={() => handleToggleFavorite}
             {...pageProps}
           />
         )}
