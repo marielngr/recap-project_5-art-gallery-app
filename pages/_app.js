@@ -3,7 +3,6 @@ import GlobalStyle from "../styles";
 import { SWRConfig } from "swr";
 import useSWR from "swr";
 import { useState } from "react";
-import FavoriteButton from "@/components/FavoriteButton";
 
 const fetcher = async (url) => {
   const res = await fetch(url);
@@ -26,17 +25,7 @@ export default function App({ Component, pageProps }) {
   } = useSWR("https://example-apis.vercel.app/api/art", fetcher);
 
   const [artPiecesInfo, setArtPiecesInfo] = useState([]);
-
-  // function handleToggleFavorite(slug) {
-  //   console.log("HandleToggleFAvorite für ", slug);
-  //   setArtPiecesInfo(
-  //     artPiecesInfo.map((artPiece) =>
-  //       artPiece.slug === slug
-  //         ? { ...artPiece, isFavorite: !artPiece.isFavorite }
-  //         : isFavorite
-  //     )
-  //   );
-  // }
+  console.log(artPiecesInfo);
 
   function handleToggleFavorite(slug) {
     setArtPiecesInfo((artPiecesInfo) => {
@@ -68,7 +57,7 @@ export default function App({ Component, pageProps }) {
           <Component
             artPieces={artPieces}
             artPiecesInfo={artPiecesInfo}
-            onToggleFavorite={() => handleToggleFavorite}
+            onToggleFavorite={handleToggleFavorite}
             {...pageProps}
           />
         )}
