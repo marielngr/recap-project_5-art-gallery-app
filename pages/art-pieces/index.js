@@ -4,7 +4,9 @@ export default function OverviewPage({
   artPieces,
   onToggleFavorite,
   artPiecesInfo,
-}) {
+})
+ {
+  console.log ("1", artPiecesInfo)
   return (
     <>
       <div>

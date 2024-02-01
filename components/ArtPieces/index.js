@@ -1,4 +1,6 @@
 import ArtPiecesPreview from "../ArtPiecesPreview";
+
+
 export function isArtPieceFavorite(artPiecesInfo, slug) {
   const info = artPiecesInfo.find((artPieceInfo) => artPieceInfo.slug === slug);
   if (info === undefined) {
